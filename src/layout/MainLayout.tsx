@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import Sidebar from "../components/Layout/Sidebar";
+import SmoothScroll from "../components/Layout/SmoothScroll";
 import Topbar from "../components/Layout/Topbar";
 
 const sectionTitles: Record<string, string> = { dashboard: "Dashboard", projects: "Projects", experience: "Experience", skills: "Skills & Technologies", about: "About Me", contact: "Contact" };
@@ -26,6 +27,7 @@ const MainLayout = () => {
   const title = useMemo(() => sectionTitles[activeSection] ?? "Dashboard", [activeSection]);
 
   return <div className="min-h-screen bg-slate-50 text-slate-700 dark:bg-slate-950 dark:text-slate-300">
+    <SmoothScroll />
     <Sidebar activeSection={activeSection} collapsed={collapsed} mobileOpen={mobileOpen} onCollapse={() => setCollapsed((value) => !value)} onNavigate={navigateTo} onMobileClose={() => setMobileOpen(false)} />
     <div className={`min-h-screen transition-[padding] duration-300 ${collapsed ? "lg:pl-[84px]" : "lg:pl-[260px]"}`}>
       <Topbar darkMode={darkMode} onMenuOpen={() => setMobileOpen(true)} onThemeToggle={() => setDarkMode((value) => !value)} title={title} />

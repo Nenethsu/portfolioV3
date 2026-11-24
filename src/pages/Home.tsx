@@ -1,3 +1,4 @@
+import { useRef } from "react";
 import {
   FiArrowUpRight,
   FiBriefcase,
@@ -11,6 +12,8 @@ import { useNavigate } from "react-router-dom";
 import { projectsData } from "../data/projectData";
 import { skillsData } from "../data/skillsData";
 import AboutImage from "../assets/AboutImage.png";
+import { useGsap } from "../hooks/useGsap";
+import { CLEAR, freeze, gsap, introHeader } from "../lib/motion";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -18,12 +21,45 @@ const Home = () => {
   const featured = projectsData.slice(0, 2);
   // One project fills the row as a wide card instead of leaving half of it empty.
   const single = featured.length === 1;
+  const root = useRef<HTMLDivElement>(null);
+
+  useGsap(root, (el) => {
+    const q = gsap.utils.selector(el);
+    const actions = q("[data-anim=actions] > *");
+    const avatar = q("[data-anim=avatar]");
+    const cards = q("[data-anim=featured]");
+    freeze([...actions, ...cards]);
+
+    const tl = introHeader(q("[data-anim=header]")[0]);
+    tl.from(actions, { y: 20, autoAlpha: 0, stagger: 0.1, clearProps: CLEAR }, "-=0.5")
+      .from(avatar, { scale: 0.3, rotation: -14, autoAlpha: 0, duration: 1.5, ease: "elastic.out(1, 0.55)" }, 0.15)
+      .from(q("[data-anim=stat]"), { y: 40, autoAlpha: 0, stagger: 0.08 }, 0.5);
+    q("[data-anim=count]").forEach((node) =>
+      tl.from(node, { textContent: 0, snap: { textContent: 1 }, duration: 1.4, ease: "power2.out" }, 0.6),
+    );
+
+    // Gentle idle float once the pop-in has settled.
+    gsap.to(avatar, { y: -14, rotation: 2, duration: 2.6, ease: "sine.inOut", yoyo: true, repeat: -1, delay: 1.6 });
+
+    gsap.from(cards, {
+      y: 60,
+      autoAlpha: 0,
+      stagger: 0.15,
+      clearProps: CLEAR,
+      scrollTrigger: { trigger: cards[0], start: "top 88%" },
+    });
+    gsap.from(q("[data-anim=connect]"), {
+      x: 40,
+      autoAlpha: 0,
+      scrollTrigger: { trigger: q("[data-anim=connect]")[0], start: "top 88%" },
+    });
+  });
 
   return (
-    <div className="space-y-6">
+    <div ref={root} className="space-y-6">
       <div className="dashboard-panel overflow-hidden p-6 sm:p-8 lg:p-10">
         <div className="flex flex-col justify-between gap-6 lg:flex-row lg:items-center lg:gap-8">
-          <div className="max-w-2xl">
+          <div data-anim="header" className="max-w-2xl">
             <p className="section-eyebrow">Developer workspace</p>
             <h2 className="text-3xl font-bold tracking-tight text-slate-950 dark:text-white sm:text-4xl">
               Welcome back, I&apos;m Ken
@@ -34,7 +70,7 @@ const Home = () => {
               I&apos;m focused on building responsive, user-friendly interfaces
               while continuously improving my development skills.
             </p>
-            <div className="mt-6 flex flex-wrap gap-3">
+            <div data-anim="actions" className="mt-6 flex flex-wrap gap-3">
               <button
                 onClick={() => onNavigate("projects")}
                 className="inline-flex items-center gap-2 rounded-xl bg-blue-600 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-blue-700"
@@ -50,6 +86,7 @@ const Home = () => {
             </div>
           </div>
           <img
+            data-anim="avatar"
             src={AboutImage}
             alt="Kenneth San Pedro"
             className="order-first mx-auto h-48 w-48 shrink-0 object-contain sm:h-56 sm:w-56 lg:order-none lg:-my-4 lg:mx-0 lg:h-72 lg:w-72 xl:h-80 xl:w-80"
@@ -85,13 +122,17 @@ const Home = () => {
         ].map(({ label, value, icon: Icon, note }) => (
           <div
             key={label}
+            data-anim="stat"
             className="dashboard-panel flex items-start justify-between p-5"
           >
             <div>
               <p className="text-xs font-medium text-slate-500 dark:text-slate-400">
                 {label}
               </p>
-              <p className="mt-2 text-2xl font-bold text-slate-950 dark:text-white">
+              <p
+                data-anim={typeof value === "number" ? "count" : undefined}
+                className="mt-2 text-2xl font-bold text-slate-950 dark:text-white"
+              >
                 {value}
               </p>
               <p className="mt-1 text-xs text-slate-500 dark:text-slate-400">
@@ -122,6 +163,7 @@ const Home = () => {
             {featured.map((project) => (
               <article
                 key={project.id}
+                data-anim="featured"
                 className={`dashboard-panel overflow-hidden transition hover:-translate-y-1 hover:shadow-lg ${single ? "lg:grid lg:grid-cols-2" : ""}`}
               >
                 <img
@@ -164,7 +206,7 @@ const Home = () => {
             ))}
           </div>
         </div>
-        <div className="dashboard-panel p-5">
+        <div data-anim="connect" className="dashboard-panel p-5">
           <p className="section-eyebrow">Profile</p>
           <h2 className="text-lg font-bold text-slate-950 dark:text-white">
             Connect with me

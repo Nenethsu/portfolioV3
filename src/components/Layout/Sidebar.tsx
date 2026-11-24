@@ -44,7 +44,7 @@ const Sidebar = ({ activeSection, collapsed, mobileOpen, onCollapse, onNavigate,
         </button>
         <button className="rounded-lg p-2 text-slate-500 hover:bg-slate-100 hover:text-slate-900 dark:hover:bg-slate-900 dark:hover:text-white lg:hidden" onClick={onMobileClose} aria-label="Close navigation"><FiX /></button>
       </div>
-      <div className="flex-1 overflow-y-auto px-3 py-6">
+      <div data-lenis-prevent className="flex-1 overflow-y-auto px-3 py-6">
         <p className={`mb-3 px-3 text-[10px] font-bold uppercase tracking-[0.18em] text-slate-400 ${collapsed ? "lg:hidden" : ""}`}>Workspace</p>
         <nav aria-label="Primary navigation" className="space-y-1">
           {navigation.map(({ id, label, icon: Icon }) => {
