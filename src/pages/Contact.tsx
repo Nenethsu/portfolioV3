@@ -1,5 +1,4 @@
-import { useRef } from "react";
-import emailjs from "@emailjs/browser";
+import { useRef, useState } from "react";
 import toast from "react-hot-toast";
 import {
   FiArrowUpRight,
@@ -14,8 +13,8 @@ import { useGsap } from "../hooks/useGsap";
 import { gsap, introHeader } from "../lib/motion";
 
 const Contact = () => {
-  const formRef = useRef<HTMLFormElement>(null);
   const root = useRef<HTMLDivElement>(null);
+  const [sending, setSending] = useState(false);
 
   useGsap(root, (el) => {
     const q = gsap.utils.selector(el);
@@ -74,29 +73,29 @@ const Contact = () => {
       button.removeEventListener("pointerleave", onLeave);
     };
   });
-  const sendEmail = (event: React.FormEvent) => {
+  // Netlify Forms: Netlify receives the POST, filters spam (Akismet + the honeypot field)
+  // and stores the message in the site's Forms dashboard. Only works on the Netlify deploy.
+  const sendMessage = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    const form = event.currentTarget;
+    setSending(true);
     const sendingToast = toast.loading("Sending your message...");
-    if (!formRef.current) return;
-    emailjs
-      .sendForm(
-        "service_kjmwztj",
-        "template_v26016l",
-        formRef.current,
-        "VYnyVI5S5FY0jPK0N",
-      )
-      .then(
-        () => {
-          toast.success("Message sent successfully!", { id: sendingToast });
-          formRef.current?.reset();
-        },
-        (error) => {
-          toast.error("Failed to send. Please try again.", {
-            id: sendingToast,
-          });
-          console.error(error);
-        },
-      );
+    try {
+      const fields = [...new FormData(form)].map(([key, value]) => [key, String(value)]);
+      const response = await fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams(fields).toString(),
+      });
+      if (!response.ok) throw new Error(`Form POST failed: ${response.status}`);
+      toast.success("Message sent successfully!", { id: sendingToast });
+      form.reset();
+    } catch (error) {
+      toast.error("Failed to send. Please try again.", { id: sendingToast });
+      console.error(error);
+    } finally {
+      setSending(false);
+    }
   };
 
   return (
@@ -175,12 +174,22 @@ const Contact = () => {
             </a>
           </div>
         </div>
+        {/* Field names must match the static copy of this form in index.html. */}
         <form
-          ref={formRef}
+          name="contact"
+          method="POST"
+          data-netlify="true"
+          netlify-honeypot="bot-field"
           data-anim="form"
-          onSubmit={sendEmail}
+          onSubmit={sendMessage}
           className="dashboard-panel space-y-4 p-6"
         >
+          <input type="hidden" name="form-name" value="contact" />
+          <input type="hidden" name="subject" value="New message from your portfolio" />
+          {/* Honeypot: hidden from people; bots that fill it in are dropped by Netlify. */}
+          <div className="hidden" aria-hidden="true">
+            <input name="bot-field" tabIndex={-1} autoComplete="off" />
+          </div>
           <div className="grid gap-4 sm:grid-cols-2">
             <label className="space-y-2 text-xs font-semibold text-slate-600 dark:text-slate-400">
               Your name
@@ -215,9 +224,10 @@ const Contact = () => {
           <button
             type="submit"
             data-anim="send"
-            className="inline-flex w-full items-center justify-center rounded-xl bg-blue-600 px-5 py-3 sm:w-auto text-sm font-semibold text-white transition-colors hover:bg-blue-700"
+            disabled={sending}
+            className="inline-flex w-full items-center justify-center rounded-xl bg-blue-600 px-5 py-3 sm:w-auto text-sm font-semibold text-white transition-colors hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-60"
           >
-            Send message <FiArrowUpRight className="ml-2" />
+            {sending ? "Sending..." : "Send message"} <FiArrowUpRight className="ml-2" />
           </button>
         </form>
       </div>

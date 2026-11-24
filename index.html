@@ -14,6 +14,15 @@
     <title>Kenneth San Pedro</title>
   </head>
   <body>
+    <!-- Netlify Forms reads this static copy at deploy time; React renders the real form on /contact.
+         Keep the field names in sync with src/pages/Contact.tsx. -->
+    <form name="contact" data-netlify="true" netlify-honeypot="bot-field" hidden>
+      <input type="hidden" name="subject" />
+      <input type="text" name="name" />
+      <input type="email" name="email" />
+      <textarea name="message"></textarea>
+      <input name="bot-field" />
+    </form>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
