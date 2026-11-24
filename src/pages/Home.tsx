@@ -70,16 +70,16 @@ const Home = () => {
               I&apos;m focused on building responsive, user-friendly interfaces
               while continuously improving my development skills.
             </p>
-            <div data-anim="actions" className="mt-6 flex flex-wrap gap-3">
+            <div data-anim="actions" className="mt-6 grid gap-3 sm:flex sm:flex-wrap">
               <button
                 onClick={() => onNavigate("projects")}
-                className="inline-flex items-center gap-2 rounded-xl bg-blue-600 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-blue-700"
+                className="inline-flex items-center justify-center gap-2 rounded-xl bg-blue-600 px-4 py-3 text-sm font-semibold text-white transition hover:bg-blue-700"
               >
                 Explore projects <FiArrowUpRight />
               </button>
               <button
                 onClick={() => onNavigate("contact")}
-                className="rounded-xl border border-slate-200 px-4 py-2.5 text-sm font-semibold text-slate-700 transition hover:border-blue-300 hover:text-blue-600 dark:border-slate-700 dark:text-slate-300 dark:hover:border-blue-700 dark:hover:text-blue-400"
+                className="rounded-xl border border-slate-200 px-4 py-3 text-sm font-semibold text-slate-700 transition hover:border-blue-300 hover:text-blue-600 dark:border-slate-700 dark:text-slate-300 dark:hover:border-blue-700 dark:hover:text-blue-400"
               >
                 Let&apos;s connect
               </button>
@@ -89,11 +89,11 @@ const Home = () => {
             data-anim="avatar"
             src={AboutImage}
             alt="Kenneth San Pedro"
-            className="order-first mx-auto h-48 w-48 shrink-0 object-contain sm:h-56 sm:w-56 lg:order-none lg:-my-4 lg:mx-0 lg:h-72 lg:w-72 xl:h-80 xl:w-80"
+            className="order-first mx-auto h-40 w-40 shrink-0 object-contain sm:h-56 sm:w-56 lg:order-none lg:-my-4 lg:mx-0 lg:h-72 lg:w-72 xl:h-80 xl:w-80"
           />
         </div>
       </div>
-      <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+      <div className="grid grid-cols-2 gap-3 sm:gap-4 xl:grid-cols-4">
         {[
           {
             label: "Projects",
@@ -120,18 +120,19 @@ const Home = () => {
             note: "Dynamic Global Soft Inc.",
           },
         ].map(({ label, value, icon: Icon, note }) => (
+          // Phones: icon on top so the two-column cards keep room for the value.
           <div
             key={label}
             data-anim="stat"
-            className="dashboard-panel flex items-start justify-between p-5"
+            className="dashboard-panel flex flex-col-reverse justify-end gap-3 p-4 sm:flex-row sm:items-start sm:justify-between sm:p-5"
           >
-            <div>
+            <div className="min-w-0">
               <p className="text-xs font-medium text-slate-500 dark:text-slate-400">
                 {label}
               </p>
               <p
                 data-anim={typeof value === "number" ? "count" : undefined}
-                className="mt-2 text-2xl font-bold text-slate-950 dark:text-white"
+                className="mt-1 text-xl font-bold text-slate-950 dark:text-white sm:mt-2 sm:text-2xl"
               >
                 {value}
               </p>
@@ -139,7 +140,7 @@ const Home = () => {
                 {note}
               </p>
             </div>
-            <span className="rounded-xl bg-blue-50 p-3 text-blue-600 dark:bg-blue-500/10 dark:text-blue-400">
+            <span className="self-start rounded-xl bg-blue-50 p-2.5 text-blue-600 dark:bg-blue-500/10 dark:text-blue-400 sm:p-3">
               <Icon />
             </span>
           </div>
@@ -154,7 +155,7 @@ const Home = () => {
             </div>
             <button
               onClick={() => onNavigate("projects")}
-              className="text-xs font-semibold text-blue-600 hover:text-blue-700 dark:text-blue-400"
+              className="-my-2 shrink-0 px-1 py-3 text-xs font-semibold text-blue-600 hover:text-blue-700 dark:text-blue-400"
             >
               View all
             </button>
@@ -164,15 +165,15 @@ const Home = () => {
               <article
                 key={project.id}
                 data-anim="featured"
-                className={`dashboard-panel overflow-hidden transition hover:-translate-y-1 hover:shadow-lg ${single ? "lg:grid lg:grid-cols-2" : ""}`}
+                className={`dashboard-panel overflow-hidden transition hover:-translate-y-1 hover:shadow-lg ${single ? "md:grid md:grid-cols-2" : ""}`}
               >
                 <img
                   src={project.image}
                   alt={project.title}
-                  className={`w-full object-cover ${single ? "aspect-video lg:h-full" : "h-40"}`}
+                  className={`w-full object-cover ${single ? "aspect-video md:h-full" : "h-40"}`}
                 />
                 <div
-                  className={`space-y-3 p-4 ${single ? "lg:flex lg:flex-col lg:justify-center lg:p-6" : ""}`}
+                  className={`space-y-3 p-4 ${single ? "md:flex md:flex-col md:justify-center md:p-6" : ""}`}
                 >
                   <div className="flex items-start justify-between gap-3">
                     <h3 className="text-sm font-bold text-slate-900 dark:text-white">
@@ -183,7 +184,7 @@ const Home = () => {
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label={`View ${project.title}`}
-                      className="text-slate-400 hover:text-blue-600"
+                      className="-m-3 p-3 text-slate-400 hover:text-blue-600"
                     >
                       <FiArrowUpRight />
                     </a>

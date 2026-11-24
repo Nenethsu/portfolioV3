@@ -109,7 +109,7 @@ const Contact = () => {
           get back to you.
         </p>
       </div>
-      <div className="grid gap-5 lg:grid-cols-[0.75fr_1.25fr]">
+      <div className="grid gap-5 xl:grid-cols-[0.75fr_1.25fr]">
         <div data-anim="info" className="dashboard-panel space-y-5 p-6">
           <div>
             <h3 className="text-lg font-bold text-slate-950 dark:text-white">
@@ -123,9 +123,9 @@ const Contact = () => {
           <div className="space-y-3 text-sm">
             <a
               href="mailto:kennethsanpedro1108@gmail.com"
-              className="flex items-center gap-3 text-slate-600 hover:text-blue-600 dark:text-slate-400 dark:hover:text-blue-400"
+              className="flex items-center gap-3 break-all py-1 text-slate-600 hover:text-blue-600 dark:text-slate-400 dark:hover:text-blue-400"
             >
-              <FiMail className="text-blue-600" />{" "}
+              <FiMail className="shrink-0 text-blue-600" />{" "}
               kennethsanpedro1108@gmail.com
             </a>
             <p className="flex items-center gap-3 text-slate-600 dark:text-slate-400">
@@ -142,7 +142,7 @@ const Contact = () => {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="GitHub"
-              className="rounded-lg border border-slate-200 p-2.5 hover:border-blue-300 hover:text-blue-600 dark:border-slate-700"
+              className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg border border-slate-200 hover:border-blue-300 hover:text-blue-600 dark:border-slate-700"
             >
               <FiGithub />
             </a>
@@ -151,7 +151,7 @@ const Contact = () => {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Instagram"
-              className="rounded-lg border border-slate-200 p-2.5 hover:border-blue-300 hover:text-blue-600 dark:border-slate-700"
+              className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg border border-slate-200 hover:border-blue-300 hover:text-blue-600 dark:border-slate-700"
             >
               <FiInstagram />
             </a>
@@ -160,7 +160,7 @@ const Contact = () => {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="LinkedIn"
-              className="rounded-lg border border-slate-200 p-2.5 hover:border-blue-300 hover:text-blue-600 dark:border-slate-700"
+              className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg border border-slate-200 hover:border-blue-300 hover:text-blue-600 dark:border-slate-700"
             >
               <FiLinkedin />
             </a>
@@ -169,7 +169,7 @@ const Contact = () => {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Open Gmail"
-              className="ml-auto inline-flex items-center gap-2 rounded-lg bg-blue-600 px-3 text-xs font-semibold text-white hover:bg-blue-700"
+              className="ml-auto inline-flex h-11 items-center gap-2 whitespace-nowrap rounded-lg bg-blue-600 px-3.5 text-xs font-semibold text-white hover:bg-blue-700"
             >
               Open Gmail <FiArrowUpRight />
             </a>
@@ -189,7 +189,7 @@ const Contact = () => {
                 type="text"
                 required
                 placeholder="Your Name"
-                className="mt-1 w-full rounded-xl border border-slate-200 bg-slate-50 p-3 text-sm font-normal outline-none focus:border-blue-400 dark:border-slate-800 dark:bg-slate-950 dark:text-white"
+                className="mt-1 w-full rounded-xl border border-slate-200 bg-slate-50 p-3 text-base font-normal sm:text-sm outline-none focus:border-blue-400 dark:border-slate-800 dark:bg-slate-950 dark:text-white"
               />
             </label>
             <label className="space-y-2 text-xs font-semibold text-slate-600 dark:text-slate-400">
@@ -199,7 +199,7 @@ const Contact = () => {
                 type="email"
                 required
                 placeholder="you@example.com"
-                className="mt-1 w-full rounded-xl border border-slate-200 bg-slate-50 p-3 text-sm font-normal outline-none focus:border-blue-400 dark:border-slate-800 dark:bg-slate-950 dark:text-white"
+                className="mt-1 w-full rounded-xl border border-slate-200 bg-slate-50 p-3 text-base font-normal sm:text-sm outline-none focus:border-blue-400 dark:border-slate-800 dark:bg-slate-950 dark:text-white"
               />
             </label>
           </div>
@@ -209,13 +209,13 @@ const Contact = () => {
               name="message"
               required
               placeholder="Tell me a little about your project..."
-              className="mt-1 h-36 w-full resize-none rounded-xl border border-slate-200 bg-slate-50 p-3 text-sm font-normal outline-none focus:border-blue-400 dark:border-slate-800 dark:bg-slate-950 dark:text-white"
+              className="mt-1 h-36 w-full resize-none rounded-xl border border-slate-200 bg-slate-50 p-3 text-base font-normal sm:text-sm outline-none focus:border-blue-400 dark:border-slate-800 dark:bg-slate-950 dark:text-white"
             />
           </label>
           <button
             type="submit"
             data-anim="send"
-            className="inline-flex items-center justify-center rounded-xl bg-blue-600 px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-blue-700"
+            className="inline-flex w-full items-center justify-center rounded-xl bg-blue-600 px-5 py-3 sm:w-auto text-sm font-semibold text-white transition-colors hover:bg-blue-700"
           >
             Send message <FiArrowUpRight className="ml-2" />
           </button>

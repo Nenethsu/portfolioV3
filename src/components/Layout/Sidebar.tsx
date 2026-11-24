@@ -33,7 +33,7 @@ const navigation = [
 const Sidebar = ({ activeSection, collapsed, mobileOpen, onCollapse, onNavigate, onMobileClose }: SidebarProps) => (
   <>
     {mobileOpen && <button aria-label="Close navigation overlay" className="fixed inset-0 z-40 bg-slate-950/40 lg:hidden" onClick={onMobileClose} />}
-    <aside className={`fixed inset-y-0 z-50 flex w-[280px] flex-col bg-white transition-all duration-300 dark:bg-slate-950 lg:left-0 ${collapsed ? "lg:w-[84px]" : "lg:w-[260px]"} ${mobileOpen ? "left-0" : "-left-[280px]"}`}>
+    <aside className={`fixed inset-y-0 z-50 flex w-[280px] flex-col bg-white transition-all duration-300 dark:bg-slate-950 lg:left-0 ${collapsed ? "lg:w-[84px]" : "lg:w-[260px]"} ${mobileOpen ? "left-0" : "-left-[280px] max-lg:invisible"}`}>
       <div className="flex h-20 items-center justify-between px-5">
         <button className={`flex items-center gap-3 overflow-hidden text-left ${collapsed ? "lg:justify-center" : ""}`} onClick={() => onNavigate("dashboard")} aria-label="Go to dashboard">
           <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-blue-600 text-sm font-bold text-white shadow-sm">KS</span>
@@ -42,7 +42,7 @@ const Sidebar = ({ activeSection, collapsed, mobileOpen, onCollapse, onNavigate,
             <span className="block whitespace-nowrap text-xs text-slate-500 dark:text-slate-400">Developer workspace</span>
           </span>
         </button>
-        <button className="rounded-lg p-2 text-slate-500 hover:bg-slate-100 hover:text-slate-900 dark:hover:bg-slate-900 dark:hover:text-white lg:hidden" onClick={onMobileClose} aria-label="Close navigation"><FiX /></button>
+        <button className="flex h-11 w-11 items-center justify-center rounded-lg text-slate-500 hover:bg-slate-100 hover:text-slate-900 dark:hover:bg-slate-900 dark:hover:text-white lg:hidden" onClick={onMobileClose} aria-label="Close navigation"><FiX /></button>
       </div>
       <div data-lenis-prevent className="flex-1 overflow-y-auto px-3 py-6">
         <p className={`mb-3 px-3 text-[10px] font-bold uppercase tracking-[0.18em] text-slate-400 ${collapsed ? "lg:hidden" : ""}`}>Workspace</p>
@@ -68,6 +68,6 @@ const Sidebar = ({ activeSection, collapsed, mobileOpen, onCollapse, onNavigate,
   </>
 );
 
-export const MobileMenuButton = ({ onClick }: { onClick: () => void }) => <button onClick={onClick} className="rounded-xl border border-slate-200 p-2 text-slate-600 hover:bg-slate-100 dark:border-slate-800 dark:text-slate-300 dark:hover:bg-slate-900 lg:hidden" aria-label="Open navigation"><FiMenu className="h-5 w-5" /></button>;
+export const MobileMenuButton = ({ onClick }: { onClick: () => void }) => <button onClick={onClick} className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-slate-200 text-slate-600 hover:bg-slate-100 dark:border-slate-800 dark:text-slate-300 dark:hover:bg-slate-900 lg:hidden" aria-label="Open navigation"><FiMenu className="h-5 w-5" /></button>;
 
 export default Sidebar;

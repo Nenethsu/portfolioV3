@@ -33,6 +33,13 @@ export const startSmoothScroll = () => {
   };
 };
 
+/** Freezes page scrolling (e.g. while the mobile menu is open) and releases it again. */
+export const setScrollLocked = (locked: boolean) => {
+  if (locked) lenis?.stop();
+  else lenis?.start();
+  document.documentElement.style.overflow = locked ? "hidden" : "";
+};
+
 export const scrollToTop = () => {
   if (lenis) lenis.scrollTo(0, { immediate: true, force: true });
   else window.scrollTo(0, 0);
