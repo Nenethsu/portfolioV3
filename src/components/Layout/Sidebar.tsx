@@ -22,12 +22,17 @@ interface SidebarProps {
   onMobileClose: () => void;
 }
 
-const navigation = [
+const navigation: {
+  id: string;
+  label: string;
+  icon: typeof FiHome;
+  badge?: string;
+}[] = [
   { id: "dashboard", label: "Dashboard", icon: FiHome },
   { id: "projects", label: "Projects", icon: FiFolder },
   { id: "experience", label: "Experience", icon: FiBriefcase },
   { id: "skills", label: "Skills & Technologies", icon: FiCode },
-  { id: "lab", label: "AI Lab", icon: FiCpu },
+  { id: "lab", label: "AI Lab", icon: FiCpu, badge: "In Development" },
   { id: "about", label: "About Me", icon: FiInfo },
   { id: "contact", label: "Contact", icon: FiMail },
 ];
@@ -84,22 +89,31 @@ const Sidebar = ({
           Workspace
         </p>
         <nav aria-label="Primary navigation" className="space-y-1">
-          {navigation.map(({ id, label, icon: Icon }) => {
+          {navigation.map(({ id, label, icon: Icon, badge }) => {
             const active = activeSection === id;
             return (
               <button
                 key={id}
                 onClick={() => onNavigate(id)}
                 className={`group flex w-full items-center gap-3 rounded-xl px-3 py-3 text-left text-sm font-medium transition ${active ? "bg-blue-50 text-blue-700 dark:bg-blue-500/10 dark:text-blue-400" : "text-slate-600 hover:bg-slate-100 hover:text-slate-950 dark:text-slate-400 dark:hover:bg-slate-900 dark:hover:text-white"} ${collapsed ? "lg:justify-center" : ""}`}
-                title={collapsed ? label : undefined}
+                title={
+                  collapsed ? (badge ? `${label} (${badge})` : label) : undefined
+                }
               >
                 <Icon
                   className={`h-[18px] w-[18px] shrink-0 ${active ? "text-blue-600 dark:text-blue-400" : ""}`}
                 />
                 <span className={collapsed ? "lg:hidden" : ""}>{label}</span>
+                {badge && (
+                  <span
+                    className={`ml-auto whitespace-nowrap rounded-full bg-amber-100 px-2 py-0.5 text-[9px] font-bold uppercase tracking-wider text-amber-700 dark:bg-amber-500/15 dark:text-amber-300 ${collapsed ? "lg:hidden" : ""}`}
+                  >
+                    {badge}
+                  </span>
+                )}
                 {active && (
                   <span
-                    className={`ml-auto h-1.5 w-1.5 rounded-full bg-blue-600 dark:bg-blue-400 ${collapsed ? "lg:hidden" : ""}`}
+                    className={`${badge ? "" : "ml-auto"} h-1.5 w-1.5 rounded-full bg-blue-600 dark:bg-blue-400 ${collapsed ? "lg:hidden" : ""}`}
                   />
                 )}
               </button>
