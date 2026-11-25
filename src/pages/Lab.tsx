@@ -53,7 +53,7 @@ const STEPS = [
   {
     icon: FiDatabase,
     title: "Data",
-    text: "Thousands of short children's stories (TinyStories). Every character becomes a number, about 100 different ones in total.",
+    text: "Thousands of short children's stories (TinyStories). Every character becomes a number: 86 different ones in total.",
   },
   {
     icon: FiZap,
