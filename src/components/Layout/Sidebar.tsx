@@ -3,6 +3,7 @@ import {
   FiChevronLeft,
   FiChevronRight,
   FiCode,
+  FiCpu,
   FiFolder,
   FiHome,
   FiInfo,
@@ -26,6 +27,7 @@ const navigation = [
   { id: "projects", label: "Projects", icon: FiFolder },
   { id: "experience", label: "Experience", icon: FiBriefcase },
   { id: "skills", label: "Skills & Technologies", icon: FiCode },
+  { id: "lab", label: "AI Lab", icon: FiCpu },
   { id: "about", label: "About Me", icon: FiInfo },
   { id: "contact", label: "Contact", icon: FiMail },
 ];

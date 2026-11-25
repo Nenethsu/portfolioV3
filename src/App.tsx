@@ -6,6 +6,7 @@ import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Experience from "./pages/Experience";
 import Home from "./pages/Home";
+import Lab from "./pages/Lab";
 import Projects from "./pages/Projects";
 import Skills from "./pages/Skills";
 
@@ -18,6 +19,7 @@ const App = () => (
         <Route path="/projects" element={<Projects />} />
         <Route path="/experience" element={<Experience />} />
         <Route path="/skills" element={<Skills />} />
+        <Route path="/lab" element={<Lab />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="*" element={<Navigate to="/dashboard" replace />} />
