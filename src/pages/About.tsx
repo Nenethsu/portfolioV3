@@ -108,19 +108,19 @@ const About = () => {
         </div>
         <div data-anim="bio">
           <h3 className="text-2xl font-bold text-slate-950 dark:text-white">
-            Aspiring web developer
+            Frontend Developer at Dynamic Global Soft Inc.
           </h3>
           <p className="mt-4 leading-7 text-slate-600 dark:text-slate-400">
-            I&apos;m an aspiring web developer from Binangonan, Rizal,
-            Philippines. I have a strong interest in games and programming,
-            which I explore during my free time, and I primarily specialize in
-            front-end web development.
+            I&apos;m a Frontend Developer at Dynamic Global Soft Inc., based in
+            Binangonan, Rizal, Philippines. I specialize in front-end web
+            development, and I have a strong interest in games and programming,
+            which I explore during my free time.
           </p>
           <p className="mt-4 leading-7 text-slate-600 dark:text-slate-400">
-            My programming journey became more focused as a fourth-year IT
-            student preparing for my internship. With graduation approaching,
-            I&apos;m motivated to continuously improve my skills and contribute
-            to thoughtful, user-friendly experiences.
+            I started at Dynamic Global Soft Inc. as a frontend intern and now
+            work there full time, building web and mobile systems for local
+            governments and barangays. I keep improving my skills and care
+            about building thoughtful, user-friendly experiences.
           </p>
           <div data-anim="links" className="mt-6 flex flex-wrap gap-3">
             <a

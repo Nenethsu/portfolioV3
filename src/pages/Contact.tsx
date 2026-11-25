@@ -107,8 +107,8 @@ const Contact = () => {
         <p className="section-eyebrow">Get in touch</p>
         <h2 className="section-title">Contact</h2>
         <p className="section-copy">
-          Have an opportunity or a project in mind? Send a message and I&apos;ll
-          get back to you.
+          Have a project or an idea in mind? Send a message and I&apos;ll get
+          back to you.
         </p>
       </div>
       <div className="grid gap-5 xl:grid-cols-[0.75fr_1.25fr]">
@@ -118,8 +118,8 @@ const Contact = () => {
               Let&apos;s talk
             </h3>
             <p className="mt-2 text-sm leading-6 text-slate-500 dark:text-slate-400">
-              I&apos;m open to conversations about internships, front-end
-              development, and collaborative projects.
+              I&apos;m happy to talk about front-end development, web projects,
+              and collaborations.
             </p>
           </div>
           <div className="space-y-3 text-sm">

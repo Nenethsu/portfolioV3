@@ -98,9 +98,9 @@ const Home = () => {
               <span className="text-blue-600 dark:text-blue-400">.</span>
             </h2>
             <p className="mt-4 text-base leading-7 text-slate-600 dark:text-slate-400">
-              An aspiring web developer from Binangonan, Rizal, Philippines.
-              I&apos;m focused on building responsive, user-friendly interfaces
-              while continuously improving my development skills.
+              A Frontend Developer at Dynamic Global Soft Inc., from
+              Binangonan, Rizal, Philippines. I build responsive, user-friendly
+              interfaces and keep improving my development skills.
             </p>
             <div
               data-anim="actions"
@@ -246,8 +246,8 @@ const Home = () => {
             Connect with me
           </h2>
           <p className="mt-2 text-sm leading-6 text-slate-500 dark:text-slate-400">
-            Follow my work and reach out if you&apos;d like to collaborate or
-            discuss an opportunity.
+            Follow my work and reach out if you&apos;d like to collaborate on
+            a project.
           </p>
           <div className="mt-6 space-y-3">
             <a

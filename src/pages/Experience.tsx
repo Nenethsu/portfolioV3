@@ -93,7 +93,9 @@ const Experience = () => {
                 <FiCalendar /> June 9, 2026 - Present
               </p>
               <p className="max-w-2xl text-sm leading-7 text-slate-600 dark:text-slate-400">
-                Working as a Frontend Developer at Dynamic Global Soft Inc.
+                Building web and mobile systems for local governments and
+                barangays at Dynamic Global Soft Inc., focused on responsive,
+                user-friendly interfaces.
               </p>
             </div>
           </div>
