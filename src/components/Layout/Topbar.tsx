@@ -4,7 +4,8 @@ import { MobileMenuButton } from "./Sidebar";
 interface TopbarProps {
   darkMode: boolean;
   onMenuOpen: () => void;
-  onThemeToggle: () => void;
+  /** Gets the button so the theme reveal can start from its position. */
+  onThemeToggle: (button: HTMLButtonElement) => void;
   title: string;
 }
 
@@ -28,7 +29,7 @@ const Topbar = ({
         </div>
       </div>
       <button
-        onClick={onThemeToggle}
+        onClick={(event) => onThemeToggle(event.currentTarget)}
         className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-slate-200 bg-white text-slate-600 transition hover:border-blue-300 hover:text-blue-600 dark:border-slate-800 dark:bg-slate-900 dark:text-slate-300 dark:hover:border-blue-700 dark:hover:text-blue-400"
         aria-label={darkMode ? "Switch to light mode" : "Switch to dark mode"}
       >

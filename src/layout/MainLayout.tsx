@@ -1,8 +1,9 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useLayoutEffect, useMemo, useState } from "react";
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import Sidebar from "../components/Layout/Sidebar";
 import SmoothScroll from "../components/Layout/SmoothScroll";
 import { setScrollLocked } from "../lib/motion";
+import { revealTheme } from "../lib/theme";
 import Topbar from "../components/Layout/Topbar";
 
 const sectionTitles: Record<string, string> = {
@@ -24,7 +25,8 @@ const MainLayout = () => {
   );
   const activeSection = location.pathname.split("/")[1] || "dashboard";
 
-  useEffect(() => {
+  // Layout effect: it runs inside the theme reveal's flushSync, so the class is set before the new snapshot.
+  useLayoutEffect(() => {
     document.documentElement.classList.toggle("dark", darkMode);
     localStorage.setItem("theme", darkMode ? "dark" : "light");
   }, [darkMode]);
@@ -70,7 +72,9 @@ const MainLayout = () => {
         <Topbar
           darkMode={darkMode}
           onMenuOpen={() => setMobileOpen(true)}
-          onThemeToggle={() => setDarkMode((value) => !value)}
+          onThemeToggle={(button) =>
+            revealTheme(button, () => setDarkMode((value) => !value))
+          }
           title={title}
         />
         <main className="mx-auto max-w-[1600px] px-4 py-6 sm:px-6 lg:px-8 lg:py-8">
