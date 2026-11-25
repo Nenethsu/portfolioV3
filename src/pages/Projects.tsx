@@ -1,5 +1,6 @@
 import { useMemo, useRef, useState } from "react";
 import { FiCalendar, FiExternalLink, FiGithub, FiSearch } from "react-icons/fi";
+import ProjectLink from "../components/ProjectLink";
 import { projectsData } from "../data/projectData";
 import { useGsap } from "../hooks/useGsap";
 import { CLEAR, freeze, gsap, introHeader } from "../lib/motion";
@@ -7,7 +8,10 @@ import { CLEAR, freeze, gsap, introHeader } from "../lib/motion";
 const Projects = () => {
   const [activeType, setActiveType] = useState("All");
   const [query, setQuery] = useState("");
-  const types = ["All", "Frontend"];
+  const types = [
+    "All",
+    ...new Set(projectsData.map((project) => project.type)),
+  ];
   const filteredProjects = useMemo(
     () =>
       projectsData.filter(
@@ -155,15 +159,13 @@ const Projects = () => {
                       <FiCalendar /> {project.date}
                     </span>
                     <div className="flex gap-2">
-                      <a
+                      <ProjectLink
                         href={project.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
                         className="flex h-10 w-10 items-center justify-center rounded-lg border border-slate-200 text-slate-500 transition hover:border-blue-300 hover:text-blue-600 dark:border-slate-700 dark:hover:border-blue-700"
                         aria-label={`Open ${project.title} live demo`}
                       >
                         <FiExternalLink />
-                      </a>
+                      </ProjectLink>
                       <a
                         href={project.codelink}
                         target="_blank"

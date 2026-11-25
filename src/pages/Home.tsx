@@ -9,6 +9,7 @@ import {
   FiLinkedin,
 } from "react-icons/fi";
 import { useNavigate } from "react-router-dom";
+import ProjectLink from "../components/ProjectLink";
 import { projectsData } from "../data/projectData";
 import { skillsData } from "../data/skillsData";
 import AboutImage from "../assets/AboutImage.png";
@@ -213,15 +214,13 @@ const Home = () => {
                     <h3 className="text-sm font-bold text-slate-900 dark:text-white">
                       {project.title}
                     </h3>
-                    <a
+                    <ProjectLink
                       href={project.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
                       aria-label={`View ${project.title}`}
                       className="-m-3 p-3 text-slate-400 hover:text-blue-600"
                     >
                       <FiArrowUpRight />
-                    </a>
+                    </ProjectLink>
                   </div>
                   <p className="line-clamp-2 text-xs leading-5 text-slate-500 dark:text-slate-400">
                     {project.description}
