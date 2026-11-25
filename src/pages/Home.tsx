@@ -31,15 +31,46 @@ const Home = () => {
     freeze([...actions, ...cards]);
 
     const tl = introHeader(q("[data-anim=header]")[0]);
-    tl.from(actions, { y: 20, autoAlpha: 0, stagger: 0.1, clearProps: CLEAR }, "-=0.5")
-      .from(avatar, { scale: 0.3, rotation: -14, autoAlpha: 0, duration: 1.5, ease: "elastic.out(1, 0.55)" }, 0.15)
+    tl.from(
+      actions,
+      { y: 20, autoAlpha: 0, stagger: 0.1, clearProps: CLEAR },
+      "-=0.5",
+    )
+      .from(
+        avatar,
+        {
+          scale: 0.3,
+          rotation: -14,
+          autoAlpha: 0,
+          duration: 1.5,
+          ease: "elastic.out(1, 0.55)",
+        },
+        0.15,
+      )
       .from(q("[data-anim=stat]"), { y: 40, autoAlpha: 0, stagger: 0.08 }, 0.5);
     q("[data-anim=count]").forEach((node) =>
-      tl.from(node, { textContent: 0, snap: { textContent: 1 }, duration: 1.4, ease: "power2.out" }, 0.6),
+      tl.from(
+        node,
+        {
+          textContent: 0,
+          snap: { textContent: 1 },
+          duration: 1.4,
+          ease: "power2.out",
+        },
+        0.6,
+      ),
     );
 
     // Gentle idle float once the pop-in has settled.
-    gsap.to(avatar, { y: -14, rotation: 2, duration: 2.6, ease: "sine.inOut", yoyo: true, repeat: -1, delay: 1.6 });
+    gsap.to(avatar, {
+      y: -14,
+      rotation: 2,
+      duration: 2.6,
+      ease: "sine.inOut",
+      yoyo: true,
+      repeat: -1,
+      delay: 1.6,
+    });
 
     gsap.from(cards, {
       y: 60,
@@ -70,7 +101,10 @@ const Home = () => {
               I&apos;m focused on building responsive, user-friendly interfaces
               while continuously improving my development skills.
             </p>
-            <div data-anim="actions" className="mt-6 grid gap-3 sm:flex sm:flex-wrap">
+            <div
+              data-anim="actions"
+              className="mt-6 grid gap-3 sm:flex sm:flex-wrap"
+            >
               <button
                 onClick={() => onNavigate("projects")}
                 className="inline-flex items-center justify-center gap-2 rounded-xl bg-blue-600 px-4 py-3 text-sm font-semibold text-white transition hover:bg-blue-700"

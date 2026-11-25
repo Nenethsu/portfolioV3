@@ -61,11 +61,39 @@ export const skillsData = [
     skill: "Tailwind CSS",
     img: "https://img.icons8.com/?size=100&id=CIAZz2CYc6Kc&format=png&color=000000",
   },
-  { id: 12, skill: "Prompt Engineering", img: "https://img.icons8.com/?size=100&id=0OQR1FYCuA9f&format=png&color=000000" },
-  { id: 13, skill: "MySQL", img: "https://img.icons8.com/?size=100&id=tBBf3P8HL0vR&format=png&color=000000" },
-  { id: 14, skill: "React Native", img: "https://img.icons8.com/?size=100&id=asWSSTBrDlTW&format=png&color=000000" },
-  { id: 15, skill: "NativeWind", img: "https://img.icons8.com/?size=100&id=CIAZz2CYc6Kc&format=png&color=000000" },
-  { id: 16, skill: "Obsidian", img: "https://img.icons8.com/?size=100&id=3tC9EQumUAuq&format=png&color=000000" },
-  { id: 17, skill: "Playwright", img: "https://img.icons8.com/?size=100&id=108784&format=png&color=000000" },
-  { id: 18, skill: "TanStack", img: "https://img.icons8.com/?size=100&id=asWSSTBrDlTW&format=png&color=000000" },
+  {
+    id: 12,
+    skill: "Prompt Engineering",
+    img: "https://img.icons8.com/?size=100&id=0OQR1FYCuA9f&format=png&color=000000",
+  },
+  {
+    id: 13,
+    skill: "MySQL",
+    img: "https://img.icons8.com/?size=100&id=tBBf3P8HL0vR&format=png&color=000000",
+  },
+  {
+    id: 14,
+    skill: "React Native",
+    img: "https://img.icons8.com/?size=100&id=asWSSTBrDlTW&format=png&color=000000",
+  },
+  {
+    id: 15,
+    skill: "NativeWind",
+    img: "https://img.icons8.com/?size=100&id=CIAZz2CYc6Kc&format=png&color=000000",
+  },
+  {
+    id: 16,
+    skill: "Obsidian",
+    img: "https://img.icons8.com/?size=100&id=3tC9EQumUAuq&format=png&color=000000",
+  },
+  {
+    id: 17,
+    skill: "Playwright",
+    img: "https://img.icons8.com/?size=100&id=108784&format=png&color=000000",
+  },
+  {
+    id: 18,
+    skill: "TanStack",
+    img: "https://img.icons8.com/?size=100&id=asWSSTBrDlTW&format=png&color=000000",
+  },
 ];

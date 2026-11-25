@@ -7,7 +7,11 @@ type Setup = (scope: HTMLElement) => void | (() => void);
  * Runs GSAP code scoped to `scope` and reverts all of it (tweens, ScrollTriggers, SplitText)
  * on unmount or when `deps` change. Nothing runs when the user prefers reduced motion.
  */
-export const useGsap = (scope: RefObject<HTMLElement | null>, setup: Setup, deps: DependencyList = []) => {
+export const useGsap = (
+  scope: RefObject<HTMLElement | null>,
+  setup: Setup,
+  deps: DependencyList = [],
+) => {
   useLayoutEffect(() => {
     const element = scope.current;
     if (!element) return;

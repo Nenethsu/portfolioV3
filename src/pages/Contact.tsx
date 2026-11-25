@@ -81,7 +81,10 @@ const Contact = () => {
     setSending(true);
     const sendingToast = toast.loading("Sending your message...");
     try {
-      const fields = [...new FormData(form)].map(([key, value]) => [key, String(value)]);
+      const fields = [...new FormData(form)].map(([key, value]) => [
+        key,
+        String(value),
+      ]);
       const response = await fetch("/", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -185,7 +188,11 @@ const Contact = () => {
           className="dashboard-panel space-y-4 p-6"
         >
           <input type="hidden" name="form-name" value="contact" />
-          <input type="hidden" name="subject" value="New message from your portfolio" />
+          <input
+            type="hidden"
+            name="subject"
+            value="New message from your portfolio"
+          />
           {/* Honeypot: hidden from people; bots that fill it in are dropped by Netlify. */}
           <div className="hidden" aria-hidden="true">
             <input name="bot-field" tabIndex={-1} autoComplete="off" />
@@ -227,7 +234,8 @@ const Contact = () => {
             disabled={sending}
             className="inline-flex w-full items-center justify-center rounded-xl bg-blue-600 px-5 py-3 sm:w-auto text-sm font-semibold text-white transition-colors hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-60"
           >
-            {sending ? "Sending..." : "Send message"} <FiArrowUpRight className="ml-2" />
+            {sending ? "Sending..." : "Send message"}{" "}
+            <FiArrowUpRight className="ml-2" />
           </button>
         </form>
       </div>

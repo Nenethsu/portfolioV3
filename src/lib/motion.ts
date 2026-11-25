@@ -7,13 +7,15 @@ gsap.registerPlugin(ScrollTrigger, SplitText);
 gsap.defaults({ ease: "power3.out", duration: 0.8 });
 
 export const REDUCED_MOTION = "(prefers-reduced-motion: reduce)";
-export const prefersReducedMotion = () => window.matchMedia(REDUCED_MOTION).matches;
+export const prefersReducedMotion = () =>
+  window.matchMedia(REDUCED_MOTION).matches;
 
 /** Inline styles GSAP leaves behind; cleared so Tailwind hover transforms work again. */
 export const CLEAR = "transform,opacity,visibility,transition";
 
 /** Turns off Tailwind's CSS transition on targets so it doesn't smear GSAP's per-frame updates. */
-export const freeze = (targets: gsap.TweenTarget) => gsap.set(targets, { transition: "none" });
+export const freeze = (targets: gsap.TweenTarget) =>
+  gsap.set(targets, { transition: "none" });
 
 let lenis: Lenis | null = null;
 
@@ -55,9 +57,14 @@ export const introHeader = (header: Element | null) => {
   if (eyebrow) tl.from(eyebrow, { x: -24, autoAlpha: 0, duration: 0.6 });
   if (title) {
     const split = SplitText.create(title, { type: "words", mask: "words" });
-    tl.from(split.words, { yPercent: 110, duration: 0.9, stagger: 0.07, ease: "expo.out" }, "-=0.35");
+    tl.from(
+      split.words,
+      { yPercent: 110, duration: 0.9, stagger: 0.07, ease: "expo.out" },
+      "-=0.35",
+    );
   }
-  if (copy.length) tl.from(copy, { y: 16, autoAlpha: 0, stagger: 0.1 }, "-=0.6");
+  if (copy.length)
+    tl.from(copy, { y: 16, autoAlpha: 0, stagger: 0.1 }, "-=0.6");
   return tl;
 };
 

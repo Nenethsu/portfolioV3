@@ -1,7 +1,11 @@
 import { useEffect, useLayoutEffect } from "react";
 import { useLocation } from "react-router-dom";
 import "lenis/dist/lenis.css";
-import { ScrollTrigger, scrollToTop, startSmoothScroll } from "../../lib/motion";
+import {
+  ScrollTrigger,
+  scrollToTop,
+  startSmoothScroll,
+} from "../../lib/motion";
 
 /**
  * Lenis smooth scrolling for the whole app. Render it before <Outlet />: its layout effect
