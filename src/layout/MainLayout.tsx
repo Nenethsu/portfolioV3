@@ -76,9 +76,6 @@ const MainLayout = () => {
         <main className="mx-auto max-w-[1600px] px-4 py-6 sm:px-6 lg:px-8 lg:py-8">
           <Outlet />
         </main>
-        <footer className="px-4 py-6 text-center text-xs text-slate-500 dark:text-slate-500">
-          © 2026 Kenneth San Pedro · Built with React and TypeScript
-        </footer>
       </div>
     </div>
   );
