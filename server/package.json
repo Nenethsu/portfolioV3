@@ -1,0 +1,24 @@
+{
+  "name": "portfolio-server",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "description": "API for the portfolio: owner login (Render + TiDB/MySQL).",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "dev": "node --watch --env-file=.env src/index.ts",
+    "start": "node src/index.ts",
+    "create-owner": "node --env-file=.env scripts/create-owner.ts"
+  },
+  "dependencies": {
+    "cors": "^2.8.6",
+    "express": "^5.3.0",
+    "mysql2": "^3.24.6"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.6"
+  }
+}

@@ -5,6 +5,7 @@ import SmoothScroll from "../components/Layout/SmoothScroll";
 import { setScrollLocked } from "../lib/motion";
 import { revealTheme } from "../lib/theme";
 import Topbar from "../components/Layout/Topbar";
+import { useAuth } from "../lib/session";
 
 const sectionTitles: Record<string, string> = {
   dashboard: "Dashboard",
@@ -18,6 +19,7 @@ const sectionTitles: Record<string, string> = {
 const MainLayout = () => {
   const location = useLocation();
   const navigate = useNavigate();
+  const { session, logout } = useAuth();
   const [collapsed, setCollapsed] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [darkMode, setDarkMode] = useState(
@@ -76,6 +78,8 @@ const MainLayout = () => {
             revealTheme(button, () => setDarkMode((value) => !value))
           }
           title={title}
+          account={session?.role === "owner" ? session.username : "Guest"}
+          onLogout={logout}
         />
         <main className="mx-auto max-w-[1600px] px-4 py-6 sm:px-6 lg:px-8 lg:py-8">
           <Outlet />
