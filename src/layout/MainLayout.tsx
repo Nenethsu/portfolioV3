@@ -11,7 +11,6 @@ const sectionTitles: Record<string, string> = {
   projects: "Projects",
   experience: "Experience",
   skills: "Skills & Technologies",
-  lab: "AI Lab",
   about: "About Me",
   contact: "Contact",
 };

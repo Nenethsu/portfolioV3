@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 type Props = AnchorHTMLAttributes<HTMLAnchorElement> & { href: string };
 
-/** Pages on this site ("/lab") open in place; anything else opens in a new tab. */
+/** Pages on this site (starting with "/") open in place; anything else opens in a new tab. */
 const ProjectLink = ({ href, ...props }: Props) =>
   href.startsWith("/") ? (
     <Link to={href} {...props} />
