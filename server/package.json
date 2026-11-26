@@ -10,7 +10,8 @@
   "scripts": {
     "dev": "node --watch --env-file=.env src/index.ts",
     "start": "node src/index.ts",
-    "create-owner": "node --env-file=.env scripts/create-owner.ts"
+    "create-owner": "node --env-file=.env scripts/create-owner.ts",
+    "create-owner:tidb": "node --env-file=.env.tidb scripts/create-owner.ts"
   },
   "dependencies": {
     "cors": "^2.8.6",

@@ -28,6 +28,8 @@ the repo root with `npm run check:server`.
 
 **TiDB Cloud**: copy the **General** connection string into `DATABASE_URL`. TLS is required and
 on by default. Render's free plan has no fixed IP, so TiDB's IP allow list must allow all addresses.
+To create the owner in TiDB from your PC, put the TiDB string in `server/.env.tidb` (git-ignored)
+as `DATABASE_URL=...` and run `npm run create-owner:tidb`.
 
 **Render**: New **Web Service** from this repo: Root Directory `server`, Build Command `npm ci`,
 Start Command `npm start`, Health Check Path `/health`, environment from `.env.example` plus
